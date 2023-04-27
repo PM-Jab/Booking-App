@@ -1,13 +1,17 @@
 import express from "express";
+
+import cookieParser from "cookie-parser";
+
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import authRoute from "./routes/auth.js";
-import userRoute from "./routes/user.js";
+import userRoute from "./routes/users.js";
 import hotelsRoute from "./routes/hotels.js";
 import roomsRoute from "./routes/rooms.js";
 import { start } from "repl";
 
 const app = express();
+
 dotenv.config();
 
 const connectDB = async () => {
@@ -28,10 +32,11 @@ app.get("/", (req, res) => {
 });
 
 // middleware
+app.use(cookieParser());
 app.use(express.json());
 
 app.use("/api/v1/auth", authRoute);
-app.use("/api/v1/user", userRoute);
+app.use("/api/v1/users", userRoute);
 app.use("/api/v1/hotels", hotelsRoute);
 app.use("/api/v1/rooms", roomsRoute);
 
