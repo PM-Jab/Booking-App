@@ -8,16 +8,16 @@ import {
   updateRoom,
 } from "../controllers/room.js";
 
-const router = express();
+const router = express.Router();
 
 // create
-router.post("/", verifyAdmin, createRoom);
+router.post("/:hotelId", verifyAdmin, createRoom);
 
 // update
 router.put("/:id", verifyAdmin, updateRoom);
 
 // delete
-router.delete("/:id", verifyAdmin, deleteRoom);
+router.delete("/:hotelId/:id", verifyAdmin, deleteRoom);
 
 // get
 router.get("/:id", getRoom);
