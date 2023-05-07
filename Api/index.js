@@ -1,6 +1,7 @@
 import express from "express";
 
 import cookieParser from "cookie-parser";
+import cors from "cors";
 
 import dotenv from "dotenv";
 import mongoose from "mongoose";
@@ -32,6 +33,7 @@ app.get("/", (req, res) => {
 });
 
 // middleware
+app.use(cors());
 app.use(cookieParser());
 app.use(express.json());
 
