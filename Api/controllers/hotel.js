@@ -33,6 +33,19 @@ export const deleteHotel = async (req, res, next) => {
   }
 };
 
+export const deleteByCityHotel = async (req, res, next) => {
+  try {
+    const deleteCount = await Hotel.deleteMany({ city: req.params.city });
+    res
+      .status(200)
+      .json(
+        deleteCount + " hotel(s) of " + req.params.city + " has been deleted"
+      );
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const getHotel = async (req, res, next) => {
   try {
     const hotel = await Hotel.findById(req.params.id);

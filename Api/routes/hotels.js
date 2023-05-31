@@ -5,6 +5,7 @@ import {
   countByType,
   createHotel,
   deleteHotel,
+  deleteByCityHotel,
   getAllHotel,
   getHotel,
   updateHotel,
@@ -21,6 +22,9 @@ router.put("/:id", verifyAdmin, updateHotel);
 
 // delete
 router.delete("/:id", verifyAdmin, deleteHotel);
+
+//deleteMany
+router.delete("/deleteBycity/:city", verifyAdmin, deleteByCityHotel);
 
 // get
 router.get("/find/:id", getHotel);
